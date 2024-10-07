@@ -1,22 +1,20 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
 
 
         OrderMatic oMatic = new OrderMatic(0);
-        List<Thread> islemler= new ArrayList<>();
+
+        ExecutorService pool = Executors.newFixedThreadPool(10);
 
         for(int i=0; i<100; i++){
-            Thread t = new Thread(oMatic);
-            islemler.add(t);
-            t.start();
+            pool.execute(oMatic);
         }
 
-        for(Thread t : islemler){
-            t.join();
-        }
         System.out.println(oMatic.getOrderNo());
     }
 }
