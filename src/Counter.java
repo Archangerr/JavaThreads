@@ -11,7 +11,7 @@ public class Counter implements Runnable {
     public void run(){
         System.out.println(this.getName() + " Sayaç basladı ");
 
-        for(int i=0;i<100; i++){
+        for(int i=1;i<100; i++){
             System.out.println(this.getName() + " " + i);
         }
     }
